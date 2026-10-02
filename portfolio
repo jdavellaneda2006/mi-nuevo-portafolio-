@@ -1,0 +1,61 @@
+# Juan Diego Avellaneda
+
+**Portafolio:** [tu-dominio.com] · **Contacto:** juandiegoavellaneda06@gmail.com · **Fecha:** 2026-10-02
+
+## Perfil
+Periodista de videojuegos con formación en 3D. Escribo reseñas, análisis y reportajes, y uso Unreal Engine, Blender y RealityScan para explicar cómo están hechos los juegos: recreo escenas, desarmo su iluminación y su diseño de niveles, y lo cuento en texto y en video (CapCut). Complemento mis piezas con datos y gráficos hechos en R.
+
+> *"Periodismo de videojuegos desde dentro del motor."*
+
+## Contenido
+- **Reseñas:** análisis de juegos con nota, pros y contras, capturas y clips propios.
+- **Análisis técnico:** iluminación, dirección de arte, rendimiento y diseño de niveles, con recreaciones en Unreal Engine o Blender.
+- **Reportajes y entrevistas:** industria latinoamericana y colombiana, estudios indie y eventos.
+- **Opinión y ensayo:** tendencias, narrativa y diseño de juegos.
+- **Video:** video-ensayos y reels cortos editados en CapCut.
+- **Datos:** gráficos con R sobre precios, duración, ventas o métricas de Steam.
+- **Formato insignia — "Lo reconstruí":** recreo en Unreal una escena icónica de un juego y explico lo que revela sobre cómo fue hecha.
+
+## Enfoque
+Mostrar mi forma de escribir y mi mirada técnica para conseguir colaboraciones freelance con medios de videojuegos, trabajo en estudios (prensa, comunidad o contenido) y construir una audiencia propia a través del newsletter y las redes.
+
+## Público objetivo
+Editores de medios de videojuegos (IGN Latinoamérica, Vandal, 3DJuegos, MeriStation, Xataka), estudios indie que buscan cobertura, agencias de relaciones públicas del sector y jugadores interesados en cómo se hacen los juegos.
+
+## Estructura
+Barra superior fija con el nombre a la izquierda y los enlaces **Artículos**, **Análisis técnico**, **Video**, **Sobre mí** y **Contacto**, más un botón de acento "Suscríbete" al newsletter; en móvil pasa a menú hamburguesa. Debajo, la frase de presentación y la pieza más reciente destacada a pantalla completa; luego una grilla de artículos con filtros por tipo (Reseña, Análisis, Reportaje, Opinión, Video) y por plataforma o género. Cada pieza abre una página con fecha, tiempo de lectura, juego y plataforma, nota (si es reseña) y enlace "Publicado en…" cuando salió en otro medio. Sección **Publicaciones** con los textos aparecidos en otros medios. Pie con correo, redes y newsletter.
+
+## UX
+- En la primera pantalla: quién soy, qué cubro y mi pieza más reciente.
+- Miniaturas con **título visible**, tipo de pieza y juego; **filtros por categoría**.
+- Lectura cómoda: ancho de texto de unos 70 caracteres, índice en artículos largos y tiempo de lectura.
+- Contacto completo: formulario, correo, redes, CV en PDF, kit de prensa de una página y formulario para que los estudios envíen claves de prensa.
+- Videos alojados en YouTube o Vimeo e insertados, para que el sitio cargue rápido; versión móvil cuidada.
+
+## UI
+Fondo oscuro (gris carbón) para que las capturas de juego resalten, un único color de acento (cian o naranja) en botones y enlaces. Tipografía con carácter para títulos (Space Grotesk) y una muy legible para el cuerpo de los artículos (Inter o Source Serif). Grilla de 3 columnas en escritorio y 1 en móvil, imágenes a sangre y mucho espacio en blanco.
+
+## Habilidades
+| Área | Herramientas |
+|---|---|
+| Escritura y edición | Reseñas, reportajes, entrevistas, ensayo |
+| Recreación y análisis técnico | Unreal Engine, Blender, Twinmotion |
+| Fotogrametría | RealityScan |
+| Video | CapCut |
+| Datos y gráficos | R |
+
+## Plan por fases
+1. **Mes 1:** dominio, portada, Sobre mí, Contacto y 3 piezas fuertes (una reseña, un análisis técnico con recreación en Unreal y un video-ensayo corto).
+2. **Meses 2–3:** publicar una pieza por semana, abrir el newsletter y proponer temas a medios.
+3. **Mes 4 en adelante:** sección de Publicaciones, entrevistas a estudios locales y el formato "Lo reconstruí" como serie.
+
+## Tecnología
+Astro o Hugo con artículos en Markdown, alojado gratis en Netlify, Vercel o GitHub Pages; videos en YouTube o Vimeo; newsletter en Buttondown o Substack.
+
+## Pendiente por completar
+- [ ] Nombre del sitio o marca (tu nombre o algo como "Dentro del Motor").
+- [ ] Ciudad / país y formación (institución, programa, semestre).
+- [ ] Géneros y plataformas que más cubres (indie, AAA, retro, PC, consola…).
+- [ ] Temas de las 3 primeras piezas.
+- [ ] Enlaces a redes (X/Bluesky, YouTube, TikTok, Instagram, LinkedIn).
+- [ ] Dominio o plataforma del portafolio.
