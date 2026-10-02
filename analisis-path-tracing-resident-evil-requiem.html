@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Path tracing en Resident Evil Requiem · Juan Diego Avellaneda</title>
+  <meta name="description" content="Análisis técnico del path tracing de Resident Evil Requiem en PC: qué cambia frente al ray tracing y la rasterización, cuánto cuesta en rendimiento y cómo lo optimizó Capcom.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add("js-anim")</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Juan Diego Avellaneda</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="index.html#articulos" aria-current="page">Artículos</a>
+        <a href="index.html#analisis">Análisis técnico</a>
+        <a href="index.html#video">Video</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="index.html#newsletter" class="btn">Suscríbete</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" aria-label="Menú">
+    <button class="close" aria-label="Cerrar menú">×</button>
+    <a href="index.html#articulos">Artículos</a>
+    <a href="index.html#analisis">Análisis técnico</a>
+    <a href="index.html#video">Video</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="index.html#newsletter">Suscríbete</a>
+  </div>
+
+  <main>
+    <article>
+      <header class="page-head">
+        <div class="container">
+          <div class="prose">
+            <span class="tag" style="position:static;display:inline-block;margin-bottom:16px">Análisis técnico</span>
+            <h1>Path tracing en Resident Evil Requiem: cuando toda la luz se calcula con rayos</h1>
+            <p class="lead">En PC, Capcom deja de usar trucos para la luz directa y la calcula entera con trazado de rayos. Así funciona, por qué se nota tanto en un reflejo y cuánto cuesta en rendimiento.</p>
+            <div class="article-meta">
+              <span>02 oct 2026</span>
+              <span>10 min de lectura</span>
+              <span>Juego: Resident Evil Requiem</span>
+              <span>Plataforma: PC (GPU NVIDIA RTX)</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <div class="article-cover"><img src="assets/img/re-requiem-lluvia.jpg" alt="Patrullas de policía con luces moradas bajo la lluvia, junto a un coche y edificios oscuros" width="1920" height="1080"></div>
+
+        <div class="prose">
+          <nav class="toc" aria-label="Índice">
+            <strong>En este artículo</strong>
+            <ol>
+              <li><a href="#tres-modos">Tres formas de iluminar la misma calle</a></li>
+              <li><a href="#reflejo">El reflejo que lo explica todo</a></li>
+              <li><a href="#como-funciona">Cómo lo hace el RE Engine</a></li>
+              <li><a href="#optimizacion">De 21 a 13,3 milisegundos</a></li>
+              <li><a href="#rendimiento">Lo que cuesta en tu PC</a></li>
+              <li><a href="#conclusion">Qué revela sobre Capcom</a></li>
+              <li><a href="#fuentes">Fuentes</a></li>
+            </ol>
+          </nav>
+
+          <h2 id="tres-modos">Tres formas de iluminar la misma calle</h2>
+          <p><em>Resident Evil Requiem</em> salió el 26 de febrero de 2026 y en PC ofrece tres maneras de calcular la luz. La primera es la <strong>rasterización</strong>, la técnica clásica de los videojuegos: el motor dibuja los triángulos de la escena y aproxima sombras, reflejos y luz rebotada con trucos que solo usan lo que ya está en pantalla. La segunda es el <strong>ray tracing</strong> híbrido que Capcom usa desde los remakes: la luz directa sigue rasterizada y los rayos se reservan para efectos concretos, como los reflejos o la iluminación indirecta.</p>
+          <p>La tercera es el <strong>path tracing</strong>, o trazado de trayectorias. Aquí no hay reparto de tareas. Según explicó Capcom en la GDC de 2026, un único proceso de trazado calcula la luz directa y la indirecta. Cada píxel lanza rayos que rebotan por la escena y recogen la luz de lo que tocan, de forma parecida a como se renderiza una película de animación, solo que en tiempo real y con muchísimos menos rayos.</p>
+
+          <h2 id="reflejo">El reflejo que lo explica todo</h2>
+          <p>La comparación que publicó NVIDIA muestra una calle de Raccoon City con lluvia, de noche, frente a una farmacia con un letrero de neón. Es una escena casi diseñada para el path tracing: superficies mojadas, una fuente de luz intensa y coches con carrocerías curvas.</p>
+          <figure>
+            <img src="assets/img/re-pt-off.jpg" alt="Calle nocturna con un letrero de neón amarillo; sobre el parabrisas del coche en primer plano el reflejo es una mancha amarilla difusa" width="1920" height="1080" loading="lazy">
+            <figcaption>Sin path tracing: el reflejo del neón en el parabrisas y en el capó es una mancha amarilla. Imagen: Capcom, vía NVIDIA.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/re-pt-on.jpg" alt="La misma calle con path tracing: el texto Drugs &amp; Cosmetics se lee invertido en el parabrisas y en el capó del coche" width="1920" height="1080" loading="lazy">
+            <figcaption>Con path tracing: el texto del letrero se lee, invertido y curvado, sobre el cristal y la pintura. Imagen: Capcom, vía NVIDIA.</figcaption>
+          </figure>
+          <p>Fíjate en el coche del primer plano. Sin path tracing, el parabrisas y el capó muestran manchas amarillas que sugieren un reflejo, pero no lo dibujan. Es el resultado típico de los reflejos en espacio de pantalla (SSR): el motor copia píxeles de la imagen ya renderizada y los proyecta sobre la superficie, así que se deforman, se cortan en los bordes y se rompen cuando la cámara se mueve. Con path tracing, las letras de «Drugs &amp; Cosmetics» aparecen completas sobre el cristal curvo y vuelven a aparecer, más apagadas, en la pintura del capó. Además, el letrero ilumina la acera y la fachada de forma más uniforme, y las ventanas de la tienda dejan ver mejor su interior.</p>
+
+          <blockquote>La rasterización imita la luz con lo que hay en pantalla. El path tracing la sigue rebote a rebote, y por eso el reflejo de un neón por fin se puede leer.</blockquote>
+
+          <h2 id="como-funciona">Cómo lo hace el RE Engine</h2>
+          <p>En la GDC de 2026, Hitoshi Mishima, del equipo del RE Engine de Capcom, y Calvin Shu, ingeniero de NVIDIA, explicaron cómo funciona el sistema que comparten <em>Requiem</em> y <em>Pragmata</em>. Según el resumen de Wccftech, a dos ingenieros de Capcom les llevó unos dieciocho meses de trabajo. Estas son las cuatro piezas clave, contadas sin fórmulas:</p>
+          <ul>
+            <li><strong>Elegir bien qué luces muestrear.</strong> Con decenas de luces en escena, el motor no puede lanzar un rayo hacia cada una en cada píxel. Usa un muestreo por importancia (RIS) apoyado en una cuadrícula 3D que guarda qué luces afectan a cada zona, para escoger las que más aportan.</li>
+            <li><strong>Simplificar los materiales al elegir.</strong> Mientras decide qué muestras probar, el motor usa un modelo de material más sencillo (difuso más un único brillo especular) y deja el cálculo completo para el final.</li>
+            <li><strong>Reciclar caminos entre fotogramas.</strong> Con ReSTIR GI, los caminos de luz que funcionaron en el fotograma anterior se reutilizan en el siguiente. Así, la imagen tiene menos ruido sin lanzar más rayos.</li>
+            <li><strong>Dejar que una IA limpie el ruido.</strong> Con tan pocos rayos por píxel, la imagen sale granulada. DLSS Ray Reconstruction se encarga de eliminar ese ruido. Por eso el path tracing de <em>Requiem</em> solo funciona en tarjetas NVIDIA RTX y, al activarlo, el juego enciende DLSS automáticamente.</li>
+          </ul>
+          <p>Ray Reconstruction trajo sus propios problemas. Según la presentación, Capcom tuvo que darle información adicional en materiales como la piel, que dispersa la luz por debajo de la superficie, el cristal esmerilado, las gotas de lluvia, las calcomanías transparentes y los hologramas. Sin esos datos, el denoiser confundía estos efectos con ruido y los borraba o los dejaba con estelas.</p>
+
+          <h2 id="optimizacion">De 21 a 13,3 milisegundos</h2>
+          <p>Para que un juego vaya a 60 fps, cada fotograma tiene que estar listo en 16,6 milisegundos. La parte más interesante de la charla es cómo llegaron a ese número, porque el camino no fue recto. Las cifras son de una escena de prueba en 4K, con 73 luces y una RTX 5090:</p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Paso</th><th>Tiempo por fotograma</th></tr></thead>
+              <tbody>
+                <tr><td>Versión inicial</td><td>21 ms</td></tr>
+                <tr><td>Materiales simplificados al muestrear</td><td>17,7 ms</td></tr>
+                <tr><td>Primera adaptación de SER (reordenar el trabajo de la GPU)</td><td>23,5 ms</td></tr>
+                <tr><td>SER ajustado</td><td>20,8 ms</td></tr>
+                <tr><td>SER con recursos <em>bindless</em></td><td>16,9 ms</td></tr>
+                <tr><td>Con optimizaciones del driver</td><td>13,3 ms</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Hubo dos retrocesos. El más llamativo fue que, al unir dos pasos del shader en uno, el compilador duplicó instrucciones hasta llegar a unas 24.000. La GPU pasaba el 35 % del tiempo esperando a que esas instrucciones se cargaran en su caché. Cambiar a recursos <em>bindless</em>, que permiten acceder a texturas y búferes sin declararlos uno por uno, dejó el programa en unas 12.000 instrucciones y desbloqueó el resto de mejoras. En los videojuegos de hoy, rendir bien depende tanto de cómo se organiza el código para la GPU como de la técnica elegida.</p>
+
+          <h2 id="rendimiento">Lo que cuesta en tu PC</h2>
+          <p>Las pruebas de DSOGaming con una RTX 5090 en 4K y con todo al máximo muestran el precio de cada modo:</p>
+          <div class="stat-row">
+            <div class="stat"><div class="n">120 fps</div><div class="d">Rasterizado, mínimo</div></div>
+            <div class="stat"><div class="n">~60 fps</div><div class="d">Con ray tracing</div></div>
+            <div class="stat"><div class="n">24–27 fps</div><div class="d">Path tracing a resolución nativa (DLAA)</div></div>
+          </div>
+          <p>Con DLSS en modo Rendimiento, el path tracing sube a 53 fps de media, con mínimos de 47. Con la generación de fotogramas múltiple x4 llega a 180 fps, aunque parte de esas imágenes las genera una IA entre fotogramas reales y la respuesta a los controles no mejora al mismo ritmo. Ningún modo es perfecto: DSOGaming encontró fallos en los reflejos SSR del modo rasterizado, ruido al mover la cámara con ray tracing y estelas en las gotas de lluvia y el humo con path tracing, efecto del denoiser.</p>
+          <p>Hay que decirlo claro: con path tracing, ni la tarjeta más cara del mercado llega a 30 fps en 4K sin ayuda de la IA. No es un modo para jugar con cualquier equipo. Sirve para ver hacia dónde va la iluminación en los videojuegos, y en tarjetas de gama media-alta funciona si se acepta jugar con DLSS.</p>
+
+          <h2 id="conclusion">Qué revela sobre Capcom</h2>
+          <p>Lo interesante no es que <em>Requiem</em> tenga path tracing; varios juegos lo tienen desde <em>Cyberpunk 2077</em>. Lo interesante es dónde lo puso Capcom. El RE Engine siempre ha brillado en espacios pequeños, oscuros y llenos de materiales difíciles: piel, sangre, metal mojado y cristal. Son justo las superficies donde los trucos de la rasterización fallan antes. Una saga de terror vive de lo que se ve a medias en la oscuridad, y que un reflejo se pueda leer o que una luz rebote de verdad en un pasillo cambia cómo se siente el miedo.</p>
+          <p>También deja una pista sobre el futuro. Capcom invirtió año y medio en una técnica que hoy solo puede usar una parte de los jugadores de PC. Es una inversión a largo plazo: lo que aprendieron con <em>Requiem</em> y <em>Pragmata</em> estará en el motor cuando las consolas tengan potencia para usarlo.</p>
+          <!-- Formato "Lo reconstruí": si recreas la calle de la farmacia en Unreal Engine (Lumen frente a path tracing), agrega aquí tus capturas en <figure> con su <figcaption>. -->
+
+          <h2 id="fuentes">Fuentes</h2>
+          <ul>
+            <li><a href="https://wccftech.com/re-engine-path-tracing-ser-restir-gi-dlss-rr/">Wccftech — RE Engine Path Tracing Deep Dive (resumen de la charla de Capcom y NVIDIA en la GDC 2026)</a>, por Alessio Palumbo</li>
+            <li><a href="https://www.dsogaming.com/articles/resident-evil-requiem-path-tracing-dlss-4-5-benchmarks/">DSOGaming — Resident Evil Requiem: Path Tracing, Ray Tracing &amp; DLSS 4.5 Benchmarks</a>, por John Papadopoulos</li>
+            <li><a href="https://www.nvidia.com/en-us/geforce/news/resident-evil-requiem-path-tracing-dlss-4-multi-frame-gen-out-now/">NVIDIA — Resident Evil Requiem: path tracing y DLSS 4</a> (fuente de las imágenes comparativas)</li>
+            <li><a href="https://store.steampowered.com/app/3764200/">Steam — Resident Evil Requiem</a></li>
+          </ul>
+
+          <p><a href="index.html#articulos" class="btn btn-ghost">← Volver a artículos</a></p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Redes">
+        <a href="https://x.com/tu-usuario">X</a>
+        <a href="https://bsky.app/profile/tu-usuario">Bluesky</a>
+        <a href="https://www.youtube.com/@tu-usuario">YouTube</a>
+        <a href="https://www.tiktok.com/@tu-usuario">TikTok</a>
+        <a href="https://www.instagram.com/tu-usuario">Instagram</a>
+        <a href="https://www.linkedin.com/in/tu-usuario">LinkedIn</a>
+      </nav>
+      <div>
+        <a href="mailto:juandiegoavellaneda06@gmail.com">juandiegoavellaneda06@gmail.com</a>
+        <div>© 2026 Juan Diego Avellaneda. Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

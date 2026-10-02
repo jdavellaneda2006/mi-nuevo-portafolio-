@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¿Cuánto vale un dólar en Steam? · Juan Diego Avellaneda</title>
+  <meta name="description" content="Datos: comparamos el precio en Colombia y en EE. UU. de 21 juegos en Steam, con la TRM del día y el IVA incluido.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add("js-anim")</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Juan Diego Avellaneda</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="index.html#articulos" aria-current="page">Artículos</a>
+        <a href="index.html#analisis">Análisis técnico</a>
+        <a href="index.html#video">Video</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="index.html#newsletter" class="btn">Suscríbete</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" aria-label="Menú">
+    <button class="close" aria-label="Cerrar menú">×</button>
+    <a href="index.html#articulos">Artículos</a>
+    <a href="index.html#analisis">Análisis técnico</a>
+    <a href="index.html#video">Video</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="index.html#newsletter">Suscríbete</a>
+  </div>
+
+  <main>
+    <article>
+      <header class="page-head">
+        <div class="container">
+          <div class="prose">
+            <span class="tag" style="position:static;display:inline-block;margin-bottom:16px">Datos</span>
+            <h1>¿Cuánto vale un dólar en Steam? El precio de 21 juegos en Colombia, comparado</h1>
+            <p class="lead">Comparé el precio en pesos de 21 juegos con su precio en dólares, usando la TRM del día y el IVA. Muchos de los grandes lanzamientos cuestan casi lo mismo que en EE. UU. con impuestos. Call of Duty cuesta un 23 % más, y los de Capcom, un 20 % menos.</p>
+            <div class="article-meta">
+              <span>02 oct 2026</span>
+              <span>7 min de lectura</span>
+              <span>Fuente: API de Steam</span>
+              <span>Plataforma: PC</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <div class="article-cover"><img src="assets/img/datos-steam-portada.svg" alt="Gráfico ilustrativo: barras naranjas hacia la derecha y azules hacia la izquierda de una línea central, con los valores +23 % y −65 %" width="1600" height="900" data-static style="top:0;height:100%"></div>
+
+        <div class="prose">
+          <nav class="toc" aria-label="Índice">
+            <strong>En este artículo</strong>
+            <ol>
+              <li><a href="#pregunta">La pregunta</a></li>
+              <li><a href="#iva">Primero, el IVA</a></li>
+              <li><a href="#precios">Quién cobra más y quién cobra menos</a></li>
+              <li><a href="#jugadores">Cuánta gente está jugando</a></li>
+              <li><a href="#metodo">Cómo lo hice</a></li>
+            </ol>
+          </nav>
+
+          <h2 id="pregunta">La pregunta</h2>
+          <p><em>Call of Duty: Modern Warfare 4</em> cuesta COL$ 339.900 en Steam Colombia. En EE. UU. cuesta 69,99 dólares. Con la TRM del 2 de octubre de 2026 (3.307,73 pesos por dólar), esos 69,99 dólares son unos 231.500 pesos. La diferencia es de más de 100.000 pesos.</p>
+          <p>¿Es un caso aislado? Para saberlo, consulté en la API de Steam el precio de lista en Colombia y en EE. UU. de 21 juegos: los lanzamientos grandes de 2025 y 2026, algunos éxitos que siguen vendiendo y un juego colombiano.</p>
+
+          <h2 id="iva">Primero, el IVA</h2>
+          <p>Antes de comparar hay que saber un dato que cambia todo. Según la documentación de Steam para desarrolladores, en Colombia el precio incluye un IVA del 19 %. En EE. UU., en cambio, el impuesto a las ventas se suma al pagar y depende del estado. Así que el precio colombiano incluye impuestos y el estadounidense no.</p>
+          <p>La comparación justa no es «dólar por TRM», sino «dólar por TRM más IVA». Con la tasa de hoy, eso son 3.936 pesos por dólar. Esa es la línea cero del siguiente gráfico.</p>
+
+          <h2 id="precios">Quién cobra más y quién cobra menos</h2>
+          <figure class="chart-fig">
+            <h3>Precio en Colombia frente al precio de EE. UU. con TRM e IVA</h3>
+            <p class="sub">Diferencia porcentual del precio de lista. A la derecha del cero, el juego cuesta más en Colombia; a la izquierda, menos.</p>
+            <div class="legend"><span><i style="background:#d95926"></i>Más caro que dólar + IVA</span><span><i style="background:#3987e5"></i>Más barato que dólar + IVA</span></div>
+            <svg class="chart" viewBox="0 0 720 606" role="img" aria-label="Diferencia entre el precio en Colombia y el precio de EE. UU. convertido con la TRM más IVA, por juego"><line x1="196" x2="196" y1="24" y2="580" class="grid"/><text x="196" y="598" class="tick" text-anchor="middle">−80 %</text><line x1="287.6363636363636" x2="287.6363636363636" y1="24" y2="580" class="grid"/><text x="287.6363636363636" y="598" class="tick" text-anchor="middle">−60 %</text><line x1="379.27272727272725" x2="379.27272727272725" y1="24" y2="580" class="grid"/><text x="379.27272727272725" y="598" class="tick" text-anchor="middle">−40 %</text><line x1="470.9090909090909" x2="470.9090909090909" y1="24" y2="580" class="grid"/><text x="470.9090909090909" y="598" class="tick" text-anchor="middle">−20 %</text><line x1="562.5454545454545" x2="562.5454545454545" y1="24" y2="580" class="grid"/><text x="562.5454545454545" y="598" class="tick" text-anchor="middle">0 %</text><line x1="654.1818181818182" x2="654.1818181818182" y1="24" y2="580" class="grid"/><text x="654.1818181818182" y="598" class="tick" text-anchor="middle">+20 %</text><g class="bar"><title>Call of Duty: MW4: COL$ 339.900 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (+23 %)</title><rect x="0" y="30" width="720" height="26" fill="transparent"/><text x="186" y="47" class="lbl" text-anchor="end">Call of Duty: MW4</text><path d="M562.5454545454545,35 h103.11430723532544 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-103.11430723532544 z" fill="var(--c-caro)"/><text x="675.65976178078" y="47" class="val" text-anchor="start">+23 %</text></g><g class="bar"><title>Borderlands 4: COL$ 289.900 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (+5 %)</title><rect x="0" y="56" width="720" height="26" fill="transparent"/><text x="186" y="73" class="lbl" text-anchor="end">Borderlands 4</text><path d="M562.5454545454545,61 h19.958066367843344 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-19.958066367843344 z" fill="var(--c-caro)"/><text x="592.5035209132978" y="73" class="val" text-anchor="start">+5 %</text></g><g class="bar"><title>Castlevania: Belmont's Curse: COL$ 120.900 en Colombia; US$ 29.99 más IVA serían COL$ 118.047 (+2 %)</title><rect x="0" y="82" width="720" height="26" fill="transparent"/><text x="186" y="99" class="lbl" text-anchor="end">Castlevania: Belmont's Curse</text><path d="M562.5454545454545,87 h7.075087831047881 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-7.075087831047881 z" fill="var(--c-caro)"/><text x="579.6205423765024" y="99" class="val" text-anchor="start">+2 %</text></g><g class="bar"><title>Silent Hill: Townfall: COL$ 200.900 en Colombia; US$ 49.99 más IVA serían COL$ 196.771 (+2 %)</title><rect x="0" y="108" width="720" height="26" fill="transparent"/><text x="186" y="125" class="lbl" text-anchor="end">Silent Hill: Townfall</text><path d="M562.5454545454545,113 h5.615403035024656 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-5.615403035024656 z" fill="var(--c-caro)"/><text x="578.1608575804792" y="125" class="val" text-anchor="start">+2 %</text></g><g class="bar"><title>EA Sports FC 27: COL$ 279.999 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (+2 %)</title><rect x="0" y="134" width="720" height="26" fill="transparent"/><text x="186" y="151" class="lbl" text-anchor="end">EA Sports FC 27</text><path d="M562.5454545454545,139 h3.491467551264577 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-3.491467551264577 z" fill="var(--c-caro)"/><text x="576.0369220967191" y="151" class="val" text-anchor="start">+2 %</text></g><g class="bar"><title>Battlefield 6: COL$ 279.999 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (+2 %)</title><rect x="0" y="160" width="720" height="26" fill="transparent"/><text x="186" y="177" class="lbl" text-anchor="end">Battlefield 6</text><path d="M562.5454545454545,165 h3.491467551264577 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-3.491467551264577 z" fill="var(--c-caro)"/><text x="576.0369220967191" y="177" class="val" text-anchor="start">+2 %</text></g><g class="bar"><title>Gears of War: E-Day: COL$ 279.900 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (+2 %)</title><rect x="0" y="186" width="720" height="26" fill="transparent"/><text x="186" y="203" class="lbl" text-anchor="end">Gears of War: E-Day</text><path d="M562.5454545454545,191 h3.32681819434697 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-3.32681819434697 z" fill="var(--c-caro)"/><text x="575.8722727398015" y="203" class="val" text-anchor="start">+2 %</text></g><g class="bar"><title>Crimson Desert: COL$ 279.900 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (+2 %)</title><rect x="0" y="212" width="720" height="26" fill="transparent"/><text x="186" y="229" class="lbl" text-anchor="end">Crimson Desert</text><path d="M562.5454545454545,217 h3.32681819434697 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-3.32681819434697 z" fill="var(--c-caro)"/><text x="575.8722727398015" y="229" class="val" text-anchor="start">+2 %</text></g><g class="bar"><title>Fable: COL$ 279.900 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (+2 %)</title><rect x="0" y="238" width="720" height="26" fill="transparent"/><text x="186" y="255" class="lbl" text-anchor="end">Fable</text><path d="M562.5454545454545,243 h3.32681819434697 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-3.32681819434697 z" fill="var(--c-caro)"/><text x="575.8722727398015" y="255" class="val" text-anchor="start">+2 %</text></g><g class="bar"><title>Death Stranding 2: COL$ 259.000 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (−6 %)</title><rect x="0" y="264" width="720" height="26" fill="transparent"/><text x="186" y="281" class="lbl" text-anchor="end">Death Stranding 2</text><path d="M562.5454545454545,269 h-23.432490488260555 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h23.432490488260555 z" fill="var(--c-barato)"/><text x="529.112964057194" y="281" class="val" text-anchor="end">−6 %</text></g><g class="bar"><title>Final Fantasy Resonance: COL$ 180.000 en Colombia; US$ 49.99 más IVA serían COL$ 196.771 (−9 %)</title><rect x="0" y="290" width="720" height="26" fill="transparent"/><text x="186" y="307" class="lbl" text-anchor="end">Final Fantasy Resonance</text><path d="M562.5454545454545,295 h-35.05041042158064 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h35.05041042158064 z" fill="var(--c-barato)"/><text x="517.4950441238739" y="307" class="val" text-anchor="end">−9 %</text></g><g class="bar"><title>Elden Ring: COL$ 201.900 en Colombia; US$ 59.99 más IVA serían COL$ 236.133 (−14 %)</title><rect x="0" y="316" width="720" height="26" fill="transparent"/><text x="186" y="333" class="lbl" text-anchor="end">Elden Ring</text><path d="M562.5454545454545,321 h-62.42343854194036 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h62.42343854194036 z" fill="var(--c-barato)"/><text x="490.12201600351415" y="333" class="val" text-anchor="end">−14 %</text></g><g class="bar"><title>Pragmata: COL$ 189.000 en Colombia; US$ 59.99 más IVA serían COL$ 236.133 (−20 %)</title><rect x="0" y="342" width="720" height="26" fill="transparent"/><text x="186" y="359" class="lbl" text-anchor="end">Pragmata</text><path d="M562.5454545454545,347 h-87.45406309545399 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h87.45406309545399 z" fill="var(--c-barato)"/><text x="465.0913914500005" y="359" class="val" text-anchor="end">−20 %</text></g><g class="bar"><title>Resident Evil Requiem: COL$ 220.500 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (−20 %)</title><rect x="0" y="368" width="720" height="26" fill="transparent"/><text x="186" y="385" class="lbl" text-anchor="end">Resident Evil Requiem</text><path d="M562.5454545454545,373 h-87.46279595622184 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h87.46279595622184 z" fill="var(--c-barato)"/><text x="465.08265858923266" y="385" class="val" text-anchor="end">−20 %</text></g><g class="bar"><title>Marathon: COL$ 124.900 en Colombia; US$ 39.99 más IVA serían COL$ 157.409 (−21 %)</title><rect x="0" y="394" width="720" height="26" fill="transparent"/><text x="186" y="411" class="lbl" text-anchor="end">Marathon</text><path d="M562.5454545454545,399 h-90.62535318579273 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h90.62535318579273 z" fill="var(--c-barato)"/><text x="461.92010135966177" y="411" class="val" text-anchor="end">−21 %</text></g><g class="bar"><title>Clair Obscur: Exp. 33: COL$ 153.000 en Colombia; US$ 49.99 más IVA serían COL$ 196.771 (−22 %)</title><rect x="0" y="420" width="720" height="26" fill="transparent"/><text x="186" y="437" class="lbl" text-anchor="end">Clair Obscur: Exp. 33</text><path d="M562.5454545454545,425 h-97.92012158561636 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h97.92012158561636 z" fill="var(--c-barato)"/><text x="454.62533295983815" y="437" class="val" text-anchor="end">−22 %</text></g><g class="bar"><title>Monster Hunter Wilds: COL$ 121.800 en Colombia; US$ 39.99 más IVA serían COL$ 157.409 (−23 %)</title><rect x="0" y="446" width="720" height="26" fill="transparent"/><text x="186" y="463" class="lbl" text-anchor="end">Monster Hunter Wilds</text><path d="M562.5454545454545,451 h-99.64877225294788 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h99.64877225294788 z" fill="var(--c-barato)"/><text x="452.8966822925066" y="463" class="val" text-anchor="end">−23 %</text></g><g class="bar"><title>Ace Combat 8: COL$ 209.900 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (−24 %)</title><rect x="0" y="472" width="720" height="26" fill="transparent"/><text x="186" y="489" class="lbl" text-anchor="end">Ace Combat 8</text><path d="M562.5454545454545,477 h-105.0919190201281 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h105.0919190201281 z" fill="var(--c-barato)"/><text x="447.4535355253264" y="489" class="val" text-anchor="end">−24 %</text></g><g class="bar"><title>Hollow Knight: Silksong: COL$ 47.500 en Colombia; US$ 19.99 más IVA serían COL$ 78.685 (−40 %)</title><rect x="0" y="498" width="720" height="26" fill="transparent"/><text x="186" y="515" class="lbl" text-anchor="end">Hollow Knight: Silksong</text><path d="M562.5454545454545,503 h-177.58851986269252 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h177.58851986269252 z" fill="var(--c-barato)"/><text x="374.956934682762" y="515" class="val" text-anchor="end">−40 %</text></g><g class="bar"><title>007 First Light: COL$ 160.000 en Colombia; US$ 69.99 más IVA serían COL$ 275.495 (−42 %)</title><rect x="0" y="524" width="720" height="26" fill="transparent"/><text x="186" y="541" class="lbl" text-anchor="end">007 First Light</text><path d="M562.5454545454545,529 h-188.08184740587524 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h188.08184740587524 z" fill="var(--c-barato)"/><text x="364.46360713957927" y="541" class="val" text-anchor="end">−42 %</text></g><g class="bar"><title>Vultures: COL$ 24.999 en Colombia; US$ 17.99 más IVA serían COL$ 70.812 (−65 %)</title><rect x="0" y="550" width="720" height="26" fill="transparent"/><text x="186" y="567" class="lbl" text-anchor="end">Vultures</text><path d="M562.5454545454545,555 h-292.4288305747269 a4,4 0 0 0 -4,4 v8 a4,4 0 0 0 4,4 h292.4288305747269 z" fill="var(--c-barato)"/><text x="260.11662397072763" y="567" class="val" text-anchor="end">−65 %</text></g><line x1="562.5454545454545" x2="562.5454545454545" y1="24" y2="580" class="ref"/></svg>
+            <figcaption>Fuente: API de la tienda de Steam (precios de lista sin descuentos, consultados el 2 oct 2026) y TRM de la Superintendencia Financiera vía datos.gov.co. Gráfico propio.</figcaption>
+          </figure>
+          <p>El patrón más claro es un grupo de siete juegos que cuestan casi exactamente lo mismo que en EE. UU. con impuestos. <em>Gears of War: E-Day</em>, <em>Fable</em>, <em>EA Sports FC 27</em>, <em>Battlefield 6</em> y <em>Crimson Desert</em> cuestan COL$ 279.900 o 279.999 por un precio de 69,99 dólares, o sea, unos 4.000 pesos por dólar. Los juegos de Konami están en la misma tasa. Frente a la TRM sola parecen un 21 % más caros, pero casi toda esa diferencia es el IVA: el sobreprecio real está entre el 1,6 % y el 2,4 %.</p>
+          <div class="stat-row">
+            <div class="stat"><div class="n">+23 %</div><div class="d">Call of Duty: MW4, el más caro. COL$ 339.900 frente a 275.495 de referencia.</div></div>
+            <div class="stat"><div class="n">−20 %</div><div class="d">Resident Evil Requiem y Pragmata, de Capcom, por debajo del dólar + IVA.</div></div>
+            <div class="stat"><div class="n">−65 %</div><div class="d">Vultures, del estudio bogotano Team Vultures: COL$ 24.999 por un precio de US$ 17,99.</div></div>
+          </div>
+          <p>Hay dos excepciones al alza. <em>Call of Duty: Modern Warfare 4</em> cobra 4.856 pesos por dólar, un 23 % más que la referencia con impuestos. <em>Borderlands 4</em> también está por encima, con un 5 %.</p>
+          <p>Del otro lado están las editoras que ajustan el precio al mercado local. Capcom cobra entre 3.050 y 3.150 pesos por dólar en <em>Resident Evil Requiem</em>, <em>Pragmata</em> y <em>Monster Hunter Wilds</em>: entre un 20 % y un 23 % menos que la referencia. Bandai Namco hace algo parecido con <em>Ace Combat 8</em> y <em>Elden Ring</em>, igual que Bungie con <em>Marathon</em> y Kepler con <em>Clair Obscur: Expedition 33</em>. Los descuentos más fuertes los tienen <em>007 First Light</em> (−42 %), <em>Hollow Knight: Silksong</em> (−40 %) y, sobre todo, <em>Vultures</em>, del estudio colombiano Team Vultures (−65 %), que cobra en pesos mucho menos de lo que indicaría su precio en dólares. Escribí sobre ese estudio en el <a href="reportaje-estudios-indie-colombia.html">reportaje sobre estudios indie colombianos</a>.</p>
+
+          <details class="data">
+            <summary>Ver la tabla completa</summary>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Juego</th><th>Precio en Colombia (COL$)</th><th>Precio en EE. UU. (US$)</th><th>US$ + IVA en pesos</th><th>Diferencia</th><th>Jugadores ahora</th></tr></thead>
+                <tbody>
+<tr><td>Call of Duty: MW4</td><td>339.900</td><td>69,99</td><td>275.495</td><td>+23 %</td><td>—</td></tr>
+<tr><td>Borderlands 4</td><td>289.900</td><td>69,99</td><td>275.495</td><td>+5 %</td><td>7.175</td></tr>
+<tr><td>Castlevania: Belmont's Curse</td><td>120.900</td><td>29,99</td><td>118.047</td><td>+2 %</td><td>—</td></tr>
+<tr><td>Silent Hill: Townfall</td><td>200.900</td><td>49,99</td><td>196.771</td><td>+2 %</td><td>2.441</td></tr>
+<tr><td>EA Sports FC 27</td><td>279.999</td><td>69,99</td><td>275.495</td><td>+2 %</td><td>74.721</td></tr>
+<tr><td>Battlefield 6</td><td>279.999</td><td>69,99</td><td>275.495</td><td>+2 %</td><td>32.140</td></tr>
+<tr><td>Gears of War: E-Day</td><td>279.900</td><td>69,99</td><td>275.495</td><td>+2 %</td><td>—</td></tr>
+<tr><td>Crimson Desert</td><td>279.900</td><td>69,99</td><td>275.495</td><td>+2 %</td><td>17.452</td></tr>
+<tr><td>Fable</td><td>279.900</td><td>69,99</td><td>275.495</td><td>+2 %</td><td>—</td></tr>
+<tr><td>Death Stranding 2</td><td>259.000</td><td>69,99</td><td>275.495</td><td>−6 %</td><td>1.901</td></tr>
+<tr><td>Final Fantasy Resonance</td><td>180.000</td><td>49,99</td><td>196.771</td><td>−9 %</td><td>—</td></tr>
+<tr><td>Elden Ring</td><td>201.900</td><td>59,99</td><td>236.133</td><td>−14 %</td><td>32.719</td></tr>
+<tr><td>Pragmata</td><td>189.000</td><td>59,99</td><td>236.133</td><td>−20 %</td><td>1.312</td></tr>
+<tr><td>Resident Evil Requiem</td><td>220.500</td><td>69,99</td><td>275.495</td><td>−20 %</td><td>4.913</td></tr>
+<tr><td>Marathon</td><td>124.900</td><td>39,99</td><td>157.409</td><td>−21 %</td><td>1.513</td></tr>
+<tr><td>Clair Obscur: Exp. 33</td><td>153.000</td><td>49,99</td><td>196.771</td><td>−22 %</td><td>5.478</td></tr>
+<tr><td>Monster Hunter Wilds</td><td>121.800</td><td>39,99</td><td>157.409</td><td>−23 %</td><td>40.481</td></tr>
+<tr><td>Ace Combat 8</td><td>209.900</td><td>69,99</td><td>275.495</td><td>−24 %</td><td>47.257</td></tr>
+<tr><td>Hollow Knight: Silksong</td><td>47.500</td><td>19,99</td><td>78.685</td><td>−40 %</td><td>8.617</td></tr>
+<tr><td>007 First Light</td><td>160.000</td><td>69,99</td><td>275.495</td><td>−42 %</td><td>2.967</td></tr>
+<tr><td>Vultures</td><td>24.999</td><td>17,99</td><td>70.812</td><td>−65 %</td><td>5</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <blockquote>Casi todo el «sobreprecio» de los juegos en Colombia es IVA. Lo que de verdad cambia entre un juego y otro es la política de cada editora.</blockquote>
+
+          <h2 id="jugadores">Cuánta gente está jugando</h2>
+          <p>La misma API permite ver cuántas personas están jugando en este momento. Es solo una foto de un instante, un viernes por la mañana en América, pero sirve para ver qué juegos tienen público hoy.</p>
+          <figure class="chart-fig">
+            <h3>Jugadores simultáneos en Steam</h3>
+            <p class="sub">2 de octubre de 2026, 10:28 a. m. (hora de Colombia). Solo juegos ya lanzados con más de 100 jugadores.</p>
+            <svg class="chart" viewBox="0 0 720 434" role="img" aria-label="Jugadores simultáneos en Steam el 2 de octubre de 2026 a las 10:28 a. m., hora de Colombia"><line x1="172" x2="172" y1="8" y2="408" class="grid"/><text x="172" y="426" class="tick" text-anchor="middle">0</text><line x1="293" x2="293" y1="8" y2="408" class="grid"/><text x="293" y="426" class="tick" text-anchor="middle">20.000</text><line x1="414" x2="414" y1="8" y2="408" class="grid"/><text x="414" y="426" class="tick" text-anchor="middle">40.000</text><line x1="535" x2="535" y1="8" y2="408" class="grid"/><text x="535" y="426" class="tick" text-anchor="middle">60.000</text><line x1="656" x2="656" y1="8" y2="408" class="grid"/><text x="656" y="426" class="tick" text-anchor="middle">80.000</text><g class="bar"><title>EA Sports FC 27: 74.721 jugadores simultáneos · 53,1 % de reseñas positivas</title><rect x="0" y="14" width="720" height="26" fill="transparent"/><text x="162" y="31" class="lbl" text-anchor="end">EA Sports FC 27</text><path d="M172,19 h448.06205 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-448.06205 z" fill="var(--c-barato)"/><text x="630.06205" y="31" class="val">74.721</text></g><g class="bar"><title>Ace Combat 8: 47.257 jugadores simultáneos · 74,9 % de reseñas positivas</title><rect x="0" y="40" width="720" height="26" fill="transparent"/><text x="162" y="57" class="lbl" text-anchor="end">Ace Combat 8</text><path d="M172,45 h281.90485 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-281.90485 z" fill="var(--c-barato)"/><text x="463.90485" y="57" class="val">47.257</text></g><g class="bar"><title>Monster Hunter Wilds: 40.481 jugadores simultáneos · 49,5 % de reseñas positivas</title><rect x="0" y="66" width="720" height="26" fill="transparent"/><text x="162" y="83" class="lbl" text-anchor="end">Monster Hunter Wilds</text><path d="M172,71 h240.91004999999996 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-240.91004999999996 z" fill="var(--c-barato)"/><text x="422.91004999999996" y="83" class="val">40.481</text></g><g class="bar"><title>Elden Ring: 32.719 jugadores simultáneos · 93 % de reseñas positivas</title><rect x="0" y="92" width="720" height="26" fill="transparent"/><text x="162" y="109" class="lbl" text-anchor="end">Elden Ring</text><path d="M172,97 h193.94995 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-193.94995 z" fill="var(--c-barato)"/><text x="375.94995" y="109" class="val">32.719</text></g><g class="bar"><title>Battlefield 6: 32.140 jugadores simultáneos · 63,7 % de reseñas positivas</title><rect x="0" y="118" width="720" height="26" fill="transparent"/><text x="162" y="135" class="lbl" text-anchor="end">Battlefield 6</text><path d="M172,123 h190.447 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-190.447 z" fill="var(--c-barato)"/><text x="372.447" y="135" class="val">32.140</text></g><g class="bar"><title>Crimson Desert: 17.452 jugadores simultáneos · 83,7 % de reseñas positivas</title><rect x="0" y="144" width="720" height="26" fill="transparent"/><text x="162" y="161" class="lbl" text-anchor="end">Crimson Desert</text><path d="M172,149 h101.58460000000002 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-101.58460000000002 z" fill="var(--c-barato)"/><text x="283.5846" y="161" class="val">17.452</text></g><g class="bar"><title>Hollow Knight: Silksong: 8.617 jugadores simultáneos · 89,5 % de reseñas positivas</title><rect x="0" y="170" width="720" height="26" fill="transparent"/><text x="162" y="187" class="lbl" text-anchor="end">Hollow Knight: Silksong</text><path d="M172,175 h48.13285000000002 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-48.13285000000002 z" fill="var(--c-barato)"/><text x="230.13285000000002" y="187" class="val">8.617</text></g><g class="bar"><title>Borderlands 4: 7.175 jugadores simultáneos · 57,6 % de reseñas positivas</title><rect x="0" y="196" width="720" height="26" fill="transparent"/><text x="162" y="213" class="lbl" text-anchor="end">Borderlands 4</text><path d="M172,201 h39.40875 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-39.40875 z" fill="var(--c-barato)"/><text x="221.40875" y="213" class="val">7.175</text></g><g class="bar"><title>Clair Obscur: Exp. 33: 5.478 jugadores simultáneos · 95,2 % de reseñas positivas</title><rect x="0" y="222" width="720" height="26" fill="transparent"/><text x="162" y="239" class="lbl" text-anchor="end">Clair Obscur: Exp. 33</text><path d="M172,227 h29.141899999999993 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-29.141899999999993 z" fill="var(--c-barato)"/><text x="211.1419" y="239" class="val">5.478</text></g><g class="bar"><title>Resident Evil Requiem: 4.913 jugadores simultáneos · 95,9 % de reseñas positivas</title><rect x="0" y="248" width="720" height="26" fill="transparent"/><text x="162" y="265" class="lbl" text-anchor="end">Resident Evil Requiem</text><path d="M172,253 h25.723649999999992 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-25.723649999999992 z" fill="var(--c-barato)"/><text x="207.72365" y="265" class="val">4.913</text></g><g class="bar"><title>007 First Light: 2.967 jugadores simultáneos · 91,2 % de reseñas positivas</title><rect x="0" y="274" width="720" height="26" fill="transparent"/><text x="162" y="291" class="lbl" text-anchor="end">007 First Light</text><path d="M172,279 h13.950350000000014 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-13.950350000000014 z" fill="var(--c-barato)"/><text x="195.95035000000001" y="291" class="val">2.967</text></g><g class="bar"><title>Silent Hill: Townfall: 2.441 jugadores simultáneos · 67 % de reseñas positivas</title><rect x="0" y="300" width="720" height="26" fill="transparent"/><text x="162" y="317" class="lbl" text-anchor="end">Silent Hill: Townfall</text><path d="M172,305 h10.768049999999988 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-10.768049999999988 z" fill="var(--c-barato)"/><text x="192.76805" y="317" class="val">2.441</text></g><g class="bar"><title>Death Stranding 2: 1.901 jugadores simultáneos · 95,2 % de reseñas positivas</title><rect x="0" y="326" width="720" height="26" fill="transparent"/><text x="162" y="343" class="lbl" text-anchor="end">Death Stranding 2</text><path d="M172,331 h7.501049999999992 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-7.501049999999992 z" fill="var(--c-barato)"/><text x="189.50105" y="343" class="val">1.901</text></g><g class="bar"><title>Marathon: 1.513 jugadores simultáneos · 76,6 % de reseñas positivas</title><rect x="0" y="352" width="720" height="26" fill="transparent"/><text x="162" y="369" class="lbl" text-anchor="end">Marathon</text><path d="M172,357 h5.153649999999999 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-5.153649999999999 z" fill="var(--c-barato)"/><text x="187.15365" y="369" class="val">1.513</text></g><g class="bar"><title>Pragmata: 1.312 jugadores simultáneos · 96,5 % de reseñas positivas</title><rect x="0" y="378" width="720" height="26" fill="transparent"/><text x="162" y="395" class="lbl" text-anchor="end">Pragmata</text><path d="M172,383 h3.9376000000000033 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-3.9376000000000033 z" fill="var(--c-barato)"/><text x="185.9376" y="395" class="val">1.312</text></g></svg>
+            <figcaption>Fuente: API de Steam (ISteamUserStats/GetNumberOfCurrentPlayers). Gráfico propio.</figcaption>
+          </figure>
+          <p><em>EA Sports FC 27</em>, que salió el 24 de septiembre, encabeza la lista con casi 75.000 jugadores. <em>Ace Combat 8</em> salió ayer y ya tiene más de 47.000, una cifra muy alta para una saga de simulación de vuelo. Destaca también <em>Elden Ring</em>: cuatro años y medio después de su lanzamiento sigue por encima de los 32.000 jugadores, casi lo mismo que <em>Battlefield 6</em>.</p>
+          <p>En el otro extremo, <em>Silent Hill: Townfall</em> tiene unos 2.400 jugadores y un 67 % de reseñas positivas en Steam, una nota «Variada» que contrasta con el 81 de Metacritic que comenté en el <a href="critica-septiembre-2026.html">resumen de la crítica de septiembre</a>. Es otro recordatorio de que la crítica y los jugadores no siempre coinciden.</p>
+
+          <h2 id="metodo">Cómo lo hice</h2>
+          <ul>
+            <li><strong>Precios:</strong> precio de lista (sin descuentos activos) de la API de la tienda de Steam con <code>cc=co</code> y <code>cc=us</code>, consultado el 2 de octubre de 2026.</li>
+            <li><strong>Tipo de cambio:</strong> TRM vigente el 2 de octubre de 2026, de 3.307,73 pesos por dólar, publicada por la Superintendencia Financiera en datos.gov.co.</li>
+            <li><strong>Impuestos:</strong> según la documentación de Steamworks, en Colombia el precio incluye un IVA del 19 %, y en EE. UU. el impuesto se suma al pagar. Por eso la referencia es el precio en dólares × TRM × 1,19.</li>
+            <li><strong>Jugadores y reseñas:</strong> API de estadísticas de Steam y resumen de reseñas de la tienda (todas las lenguas), en el mismo momento.</li>
+            <li><strong>Selección:</strong> 21 juegos elegidos por su relevancia, no una muestra aleatoria. Las conclusiones valen para estos juegos, no para todo el catálogo de Steam.</li>
+            <li><strong>Datos abiertos:</strong> <a href="assets/data/steam-precios-colombia-2026-10-02.csv">descarga el CSV</a> para repetir el análisis.</li>
+          </ul>
+
+          <h2 id="fuentes">Fuentes</h2>
+          <ul>
+            <li><a href="https://partner.steamgames.com/doc/finance/taxfaq?l=spanish">Steamworks — Preguntas frecuentes sobre impuestos</a></li>
+            <li><a href="https://www.datos.gov.co/Econom-a-y-Finanzas/Tasa-de-Cambio-Representativa-del-Mercado-TRM/32sa-8pi3">datos.gov.co — Tasa de Cambio Representativa del Mercado (TRM)</a></li>
+            <li><a href="https://partner.steamgames.com/doc/webapi/ISteamUserStats">Steamworks — ISteamUserStats</a></li>
+          </ul>
+
+          <p><a href="index.html#articulos" class="btn btn-ghost">← Volver a artículos</a></p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Redes">
+        <a href="https://x.com/tu-usuario">X</a>
+        <a href="https://bsky.app/profile/tu-usuario">Bluesky</a>
+        <a href="https://www.youtube.com/@tu-usuario">YouTube</a>
+        <a href="https://www.tiktok.com/@tu-usuario">TikTok</a>
+        <a href="https://www.instagram.com/tu-usuario">Instagram</a>
+        <a href="https://www.linkedin.com/in/tu-usuario">LinkedIn</a>
+      </nav>
+      <div>
+        <a href="mailto:juandiegoavellaneda06@gmail.com">juandiegoavellaneda06@gmail.com</a>
+        <div>© 2026 Juan Diego Avellaneda. Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
