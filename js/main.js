@@ -16,16 +16,57 @@ if (menu && toggle) {
 }
 
 // ===== Filtros de artículos =====
-document.querySelectorAll('.filter').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter').forEach((b) => b.classList.toggle('active', b === btn));
-    const tipo = btn.dataset.filter;
-    document.querySelectorAll('.card').forEach((card) => {
-      card.classList.toggle('hidden', tipo !== 'todos' && card.dataset.tipo !== tipo);
-    });
-    if (window.ScrollTrigger) ScrollTrigger.refresh();
+const applyFilter = (tipo) => {
+  const btn = document.querySelector(`.filter[data-filter="${tipo}"]`);
+  if (!btn) return false;
+  document.querySelectorAll('.filter').forEach((b) => b.classList.toggle('active', b === btn));
+  document.querySelectorAll('.card').forEach((card) => {
+    card.classList.toggle('hidden', tipo !== 'todos' && card.dataset.tipo !== tipo);
   });
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
+  return true;
+};
+
+document.querySelectorAll('.filter').forEach((btn) => {
+  btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
 });
+
+// Enlaces como index.html#analisis o index.html#video: abren la grilla
+// de artículos con ese filtro activo.
+const articulos = document.getElementById('articulos');
+const goToFilter = (tipo) => {
+  if (!articulos || !applyFilter(tipo)) return false;
+  const y = articulos.getBoundingClientRect().top + window.scrollY - 84;
+  if (lenis) lenis.scrollTo(y);
+  else window.scrollTo({ top: y, behavior: 'smooth' });
+  return true;
+};
+
+if (articulos) {
+  // Se registra antes que Lenis para que su manejo de anclas no interfiera.
+  window.addEventListener('click', (e) => {
+    const link = e.target.closest?.('a[href*="#"]');
+    if (!link) return;
+    const url = new URL(link.href, location.href);
+    const page = (p) => p.replace(/index\.html$/, '');
+    if (page(url.pathname) !== page(location.pathname)) return;
+    const tipo = url.hash.slice(1);
+    if (tipo === 'articulos') { applyFilter('todos'); return; }
+    if (!document.querySelector(`.filter[data-filter="${tipo}"]`)) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if (menu && link.closest('.mobile-menu')) {
+      menu.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', false);
+      if (lenis) lenis.start();
+    }
+    goToFilter(tipo);
+    history.replaceState(null, '', url.hash);
+  }, true);
+
+  const fromHash = () => goToFilter(location.hash.slice(1));
+  window.addEventListener('load', () => setTimeout(fromHash, 50));
+}
 
 // ===== Formularios de demostración =====
 document.querySelectorAll('form[data-demo]').forEach((form) => {
