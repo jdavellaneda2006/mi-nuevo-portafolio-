@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lo reconstruí · Juan Diego Avellaneda</title>
+  <meta name="description" content="Análisis técnico: recreación de una escena icónica en Unreal Engine.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add("js-anim")</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Juan Diego Avellaneda</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="index.html#articulos" aria-current="page">Artículos</a>
+        <a href="index.html#analisis">Análisis técnico</a>
+        <a href="index.html#video">Video</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="index.html#newsletter" class="btn">Suscríbete</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" aria-label="Menú">
+    <button class="close" aria-label="Cerrar menú">×</button>
+    <a href="index.html#articulos">Artículos</a>
+    <a href="index.html#analisis">Análisis técnico</a>
+    <a href="index.html#video">Video</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="index.html#newsletter">Suscríbete</a>
+  </div>
+
+  <!-- PLANTILLA DE ARTÍCULO: duplica este archivo para cada pieza nueva -->
+  <main>
+    <article>
+      <header class="page-head">
+        <div class="container">
+          <div class="prose">
+            <span class="tag" style="position:static;display:inline-block;margin-bottom:16px">Análisis técnico</span>
+            <h1>Lo reconstruí: [escena icónica de un juego]</h1>
+            <p class="lead">[Bajada: una o dos frases que resuman qué descubriste al recrear la escena en Unreal Engine.]</p>
+            <div class="article-meta">
+              <span>[02 oct 2026]</span>
+              <span>12 min de lectura</span>
+              <span>Juego: [Nombre]</span>
+              <span>Plataforma: [PC / PS5 / Switch]</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <div class="article-cover"><div class="ph ph-1" style="width:100%;height:100%"></div></div>
+
+        <div class="prose">
+          <nav class="toc" aria-label="Índice">
+            <strong>En este artículo</strong>
+            <ol>
+              <li><a href="#escena">La escena</a></li>
+              <li><a href="#luz">Cómo está iluminada</a></li>
+              <li><a href="#recreacion">Mi recreación en Unreal</a></li>
+              <li><a href="#conclusion">Qué aprendí</a></li>
+            </ol>
+          </nav>
+
+          <h2 id="escena">La escena</h2>
+          <p>[Presenta la escena: en qué momento del juego aparece, por qué es memorable y qué la hace funcionar a primera vista.]</p>
+
+          <h2 id="luz">Cómo está iluminada</h2>
+          <p>[Desarma la iluminación, la paleta de color, la composición y el diseño del espacio. Apóyate en capturas del juego.]</p>
+          <figure>
+            <div class="ph ph-2" style="aspect-ratio:16/9;border-radius:4px"></div>
+            <figcaption>[Captura del juego original]</figcaption>
+          </figure>
+
+          <blockquote>[Una idea clave del artículo, destacada como cita.]</blockquote>
+
+          <h2 id="recreacion">Mi recreación en Unreal</h2>
+          <p>[Explica el proceso: blockout, materiales, luces y fotogrametría si la usaste. Muestra el wireframe y el render final.]</p>
+          <figure>
+            <div class="ph ph-3" style="aspect-ratio:16/9;border-radius:4px"></div>
+            <figcaption>[Wireframe frente a render final de la recreación]</figcaption>
+          </figure>
+          <!-- Video: pega aquí el iframe de YouTube o Vimeo -->
+
+          <h2 id="conclusion">Qué aprendí</h2>
+          <p>[Cierra con lo que la recreación revela sobre las decisiones de los desarrolladores.]</p>
+
+          <!-- Bloque para RESEÑAS: bórralo si la pieza no lleva nota -->
+          <div class="score">
+            <div class="num">[8]</div>
+            <div><strong>Nota final</strong><br><span style="color:var(--muted)">[Veredicto en una frase.]</span></div>
+          </div>
+          <div class="pros-cons">
+            <div><h3>A favor</h3><ul><li>[Punto fuerte]</li><li>[Punto fuerte]</li></ul></div>
+            <div><h3>En contra</h3><ul><li>[Punto débil]</li><li>[Punto débil]</li></ul></div>
+          </div>
+
+          <!-- Bórralo si la pieza es inédita -->
+          <p class="published-in">Publicado originalmente en <a href="#">[Medio]</a>.</p>
+          <p><a href="index.html#articulos" class="btn btn-ghost">← Volver a artículos</a></p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Redes">
+        <a href="https://x.com/tu-usuario">X</a>
+        <a href="https://bsky.app/profile/tu-usuario">Bluesky</a>
+        <a href="https://www.youtube.com/@tu-usuario">YouTube</a>
+        <a href="https://www.tiktok.com/@tu-usuario">TikTok</a>
+        <a href="https://www.instagram.com/tu-usuario">Instagram</a>
+        <a href="https://www.linkedin.com/in/tu-usuario">LinkedIn</a>
+      </nav>
+      <div>
+        <a href="mailto:juandiegoavellaneda06@gmail.com">juandiegoavellaneda06@gmail.com</a>
+        <div>© 2026 Juan Diego Avellaneda. Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

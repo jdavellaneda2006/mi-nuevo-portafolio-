@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitio nombre="Juan Diego Avellaneda" url="https://tu-dominio.com">
+  <header>
+    <logo>Texto "JUAN DIEGO AVELLANEDA" (enlaza a la home)</logo>
+    <nav tipo="fija" movil="hamburguesa">
+      <enlace>Artículos</enlace>
+      <enlace>Análisis técnico</enlace>
+      <enlace>Video</enlace>
+      <enlace>Sobre mí</enlace>
+      <enlace>Contacto</enlace>
+      <enlace>Suscríbete (botón de acento, newsletter)</enlace>
+    </nav>
+  </header>
+  <main>
+    <section tipo="hero">
+      <h1>Periodismo de videojuegos desde dentro del motor.</h1>
+      <p>¡Hola! Soy Juan Diego Avellaneda, periodista de videojuegos con formación en 3D. Escribo reseñas, análisis y reportajes, y uso Unreal Engine, Blender y RealityScan para explicar cómo están hechos los juegos que juegas.</p>
+      <article destacado="true">Pieza más reciente a pantalla completa (imagen, título, tipo y juego)</article>
+    </section>
+    <section tipo="articulos">
+      <filtros>
+        <filtro grupo="tipo">Reseña</filtro>
+        <filtro grupo="tipo">Análisis</filtro>
+        <filtro grupo="tipo">Reportaje</filtro>
+        <filtro grupo="tipo">Opinión</filtro>
+        <filtro grupo="tipo">Video</filtro>
+        <filtro grupo="plataforma">PC / Consola / Móvil</filtro>
+        <filtro grupo="genero">Indie / AAA / Retro</filtro>
+      </filtros>
+      <ul>
+        <li><figure categoria="resena">[Título de la reseña] (nota, pros y contras, capturas y clips propios)</figure></li>
+        <li><figure categoria="analisis">Lo reconstruí: [escena icónica] (recreación en Unreal Engine)</figure></li>
+        <li><figure categoria="video">[Título del video-ensayo] (edición en CapCut)</figure></li>
+        <li><figure categoria="reportaje">[Reportaje o entrevista a estudio indie colombiano]</figure></li>
+        <li><figure categoria="opinion">[Ensayo sobre tendencia, narrativa o diseño]</figure></li>
+        <li><figure categoria="datos">[Pieza con gráficos en R: precios, duración o métricas de Steam]</figure></li>
+      </ul>
+      <plantilla-articulo>
+        <meta>Fecha, tiempo de lectura, juego, plataforma y nota (si es reseña)</meta>
+        <indice>Índice para artículos largos</indice>
+        <enlace>Publicado en… (si salió en otro medio)</enlace>
+      </plantilla-articulo>
+    </section>
+    <section tipo="publicaciones">
+      <p>Textos publicados en otros medios (pendiente de completar).</p>
+    </section>
+    <section tipo="contacto">
+      <form>Formulario de contacto</form>
+      <form>Solicitud de claves de prensa para estudios</form>
+      <a href="kit-prensa-juandiegoavellaneda.pdf">Kit de prensa</a>
+      <a href="cv-juandiegoavellaneda.pdf">Descargar CV</a>
+    </section>
+  </main>
+  <footer>
+    <newsletter>Suscríbete al newsletter</newsletter>
+    <redes>
+      <a href="https://x.com/tu-usuario">X</a>
+      <a href="https://bsky.app/profile/tu-usuario">Bluesky</a>
+      <a href="https://www.youtube.com/@tu-usuario">YouTube</a>
+      <a href="https://www.tiktok.com/@tu-usuario">TikTok</a>
+      <a href="https://www.instagram.com/tu-usuario">Instagram</a>
+      <a href="https://www.linkedin.com/in/tu-usuario">LinkedIn</a>
+    </redes>
+    <contacto>
+      <a href="mailto:juandiegoavellaneda06@gmail.com">Contáctame</a>
+      <small>© 2026 Juan Diego Avellaneda. Todos los derechos reservados.</small>
+    </contacto>
+  </footer>
+</sitio>
